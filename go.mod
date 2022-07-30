@@ -3,7 +3,7 @@ module github.com/BadgerBadgerBadgerBadger/rant
 go 1.18
 
 require (
-	github.com/BadgerBadgerBadgerBadger/goplay v0.0.0-20220725211557-2f032cf825a3
+	github.com/BadgerBadgerBadgerBadger/goplay v0.0.1
 	github.com/gorilla/handlers v1.5.1
 	github.com/gorilla/mux v1.8.0
 	github.com/gorilla/schema v1.2.0

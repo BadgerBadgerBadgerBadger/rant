@@ -3,6 +3,8 @@ package rant
 import (
 	"embed"
 	"fmt"
+	"html/template"
+	"io"
 	"io/fs"
 	"net/http"
 
@@ -43,6 +45,7 @@ type Service struct {
 	staticFileHandler http.Handler
 	slackClient       *slack.Client
 	decoder           *schema.Decoder
+	indexTemplate     *template.Template
 }
 
 func NewService(c Config) (*Service, error) {
@@ -64,9 +67,39 @@ func NewService(c Config) (*Service, error) {
 		return nil, errors.Wrap(err, "failed to static file system")
 	}
 
+	indexf, err := staticFs.Open("index.html")
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to open index file from static fs")
+	}
+	defer indexf.Close()
+
+	indexContents, err := io.ReadAll(indexf)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to read index file contents from static fs")
+	}
+
+	indexT, err := template.New("index").Parse(string(indexContents))
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to parse index contents into template from static fs")
+	}
+
+	s.indexTemplate = indexT
+
 	s.staticFileHandler = http.FileServer(http.FS(staticFs))
 
 	return &s, nil
+}
+
+type indexData struct {
+	SlackClientId    string
+	SlackRedirectUri string
+}
+
+func (rs *Service) Index(w io.Writer) error {
+	return rs.indexTemplate.Execute(
+		w,
+		indexData{SlackClientId: rs.config.Slack.Oauth.ClientID, SlackRedirectUri: rs.config.Slack.Oauth.RedirectUrl},
+	)
 }
 
 func (rs *Service) StaticHandler() http.Handler {
