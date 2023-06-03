@@ -35,16 +35,16 @@ func Rant(inp string) string {
 			result = "."
 
 		case tokens.Period:
-			result = fmt.Sprintf("!!! %s ", r.Rand())
+			result = fmt.Sprintf("!!! %s ", r.RandAngryEmoji())
 
 		case tokens.Question, tokens.QuestionBang:
-			result = fmt.Sprintf("?! %s ", r.Rand())
+			result = fmt.Sprintf("?! %s ", r.RandAngryEmoji())
 
 		case tokens.Bang, tokens.BangBang, tokens.BangBangBang:
-			result = fmt.Sprintf("!!! %s ", r.Rand())
+			result = fmt.Sprintf("!!! %s ", r.RandAngryEmoji())
 
 		case tokens.BangStr:
-			result = fmt.Sprintf("%s %s ", token.Literal, r.Rand())
+			result = fmt.Sprintf("%s %s ", token.Literal, r.RandAngryEmoji())
 		}
 
 		_, err := fmt.Fprint(&out, result)

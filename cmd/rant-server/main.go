@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"errors"
 	"flag"
 	"io"
 	"math/rand"
@@ -10,6 +9,7 @@ import (
 	"os"
 	"time"
 
+	"github.com/BadgerBadgerBadgerBadger/goplay/pkg/config"
 	"github.com/BadgerBadgerBadgerBadger/rant/internal/rant"
 	"github.com/BadgerBadgerBadgerBadger/rant/internal/rant/ranter"
 	"github.com/BadgerBadgerBadgerBadger/rant/internal/rant/slack"
@@ -18,7 +18,6 @@ import (
 	"github.com/gorilla/schema"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/BadgerBadgerBadgerBadger/goplay/pkg/config"
 	"github.com/BadgerBadgerBadgerBadger/goplay/pkg/util"
 )
 
@@ -32,10 +31,13 @@ func main() {
 	flag.Parse()
 
 	if *configPath == "" {
-		util.Must(errors.New("must provide a config path"))
-	}
-	if err := config.FromJsonFile(*configPath, &conf); err != nil {
-		util.Must(err, "failed to load config")
+		if err := config.WithOptions(&conf, config.WithEnv()); err != nil {
+			util.Must(err, "failed to load config")
+		}
+	} else {
+		if err := config.FromJsonFile(*configPath, &conf); err != nil {
+			util.Must(err, "failed to load config")
+		}
 	}
 
 	rantService, err := rant.NewService(conf)
@@ -43,7 +45,7 @@ func main() {
 
 	r := initRouter(rantService)
 
-	port := ":8000"
+	port := ":" + conf.Port
 
 	log.Printf("server starting on port %s\n", port)
 

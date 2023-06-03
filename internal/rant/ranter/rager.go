@@ -6,8 +6,8 @@ const numRageEmojis = 5
 
 var rageEmojis = [numRageEmojis]string{"😤", "😡", "😠", "🤬", "👿"}
 
-// Rager provides angry emojis. An instance or rager, on subsequent calls of the
-// Rand method, yields up a new random angry emoji.
+// Rager provides angry emojis. An instance of rager, on subsequent calls of the
+// RandAngryEmoji method, yields up a new random angry emoji.
 type Rager struct {
 	length int
 	unseen []int
@@ -42,10 +42,10 @@ func (r *Rager) initUnseen() {
 	r.unseen = unseen
 }
 
-// Rand returns a new angry emoji from a predetermined pool of
+// RandAngryEmoji returns a new angry emoji from a predetermined pool of
 // angry emojis. It tries to provide the best chance that two
 // of the same emoji won't be yielded repeatedly.
-func (r *Rager) Rand() string {
+func (r *Rager) RandAngryEmoji() string {
 
 	// let's grab the very first emoji
 	index := r.unseen[0]
