@@ -1,75 +1,176 @@
 <!DOCTYPE html>
-<html style="font-size: 16px;">
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta charset="utf-8">
-    <meta content="rant, rant is a simple service to enhance your rants" name="keywords">
-    <meta content="" name="description">
-    <meta content="np-template-header-footer-from-plugin" name="page_type">
-    <title>Home</title>
-    <link href="nicepage.css" media="screen" rel="stylesheet">
-    <link href="Home.css" media="screen" rel="stylesheet">
-    <meta content="Nicepage 3.6.2, nicepage.com" name="generator">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i"
-          id="u-theme-google-font"
-          rel="stylesheet">
+    <title>Rant Installed Successfully</title>
+    <meta content="Rant has been successfully installed to your Slack workspace" name="description">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #00C851 0%, #007E33 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #333;
+        }
 
-    <script type="application/ld+json">{
-        "@context": "http://schema.org",
-        "@type": "Organization",
-        "name": "",
-        "url": "index.html"
-    }</script>
-    <meta content="Home" property="og:title">
-    <meta content="website" property="og:type">
-    <meta content="#478ac9" name="theme-color">
-    <link href="index.html" rel="canonical">
-    <meta content="index.html" property="og:url">
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #007E33;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .success-message {
+            font-size: 1.3rem;
+            color: #007E33;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .instructions {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+            border-left: 4px solid #007E33;
+            text-align: left;
+        }
+
+        .instructions h3 {
+            color: #007E33;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .step {
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .step::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #007E33;
+            font-weight: bold;
+        }
+
+        .command {
+            background: #2f3136;
+            color: #00C851;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            display: inline-block;
+            margin: 5px 0;
+        }
+
+        .footer {
+            margin-top: 20px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+                margin: 10px;
+            }
+
+            .success-icon {
+                font-size: 3rem;
+            }
+
+            .logo {
+                font-size: 2rem;
+            }
+
+            .success-message {
+                font-size: 1.2rem;
+            }
+
+            .instructions {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 25px 15px;
+            }
+
+            .success-icon {
+                font-size: 2.5rem;
+            }
+
+            .logo {
+                font-size: 1.8rem;
+            }
+
+            .success-message {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
 </head>
-<body class="u-body">
-<header class="u-align-left u-black u-clearfix u-header u-header" id="sec-f074">
-    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-        <h1 class="u-align-center u-text u-text-default u-text-palette-3-base u-text-1">rant</h1>
+<body>
+<div class="container">
+    <div class="success-icon">✅</div>
+    <h1 class="logo">rant</h1>
+    <div class="success-message">Successfully installed!</div>
+
+    <div class="instructions">
+        <h3>How to use rant in Slack:</h3>
+        <div class="step">Go to any Slack channel</div>
+        <div class="step">Type <span class="command">/rant your message here</span></div>
+        <div class="step">Watch your text transform into ANGRY CAPS with emojis! 😡💢</div>
     </div>
-</header>
-<section class="u-align-left u-clearfix u-palette-3-base u-section-1" id="carousel_8db6">
-    <div class="u-clearfix u-sheet u-sheet-1">
-        <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
-            <div class="u-layout">
-                <div class="u-layout-col">
-                    <div class="u-size-30">
-                        <div class="u-layout-row">
-                            <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-1">
-                                <div class="u-container-layout u-valign-middle-xl u-valign-top-lg u-valign-top-md u-valign-top-sm u-valign-top-xs u-container-layout-1">
-                                    <img alt="" class="u-image u-image-default u-preserve-proportions u-image-1"
-                                         data-image-height="443"
-                                         data-image-width="443"
-                                         src="https://res.cloudinary.com/scionofbytes-com/image/upload/v1652948253/rant/leface.png">
-                                </div>
-                            </div>
-                            <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-2">
-                                <div class="u-container-layout u-container-layout-2">
-                                    <h1 class="u-align-center-sm u-align-center-xs u-text u-text-1">rant has been
-                                        installed</h1>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="u-size-30">
-                        <div class="u-layout-row">
-                            <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-3">
-                                <div class="u-container-layout u-container-layout-3"></div>
-                            </div>
-                            <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-4">
-                                <div class="u-container-layout u-container-layout-4"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+    <div class="footer">
+        Start ranting and let your frustrations be heard! 🔥
     </div>
-</section>
+</div>
 </body>
 </html>
